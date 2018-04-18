@@ -1,0 +1,6 @@
+- hosts: jumpbox
+#  become: yes
+
+  roles:
+     - openstack-dynamic-inventory
+

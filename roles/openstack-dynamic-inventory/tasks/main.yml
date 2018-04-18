@@ -1,0 +1,40 @@
+---
+- name: Get Instance Info -(0/5)
+  os_server_facts:
+    cloud: ospcloud
+    region_name: RegionOne
+  register: result
+
+- debug:
+    msg: "{{ result }}"
+
+- name: Add Host Action -(1/5)
+  add_host:
+     name: "{{ item.public_v4 }}"
+     group: "{{ item.metadata.group }}"
+  with_items: "{{ result.ansible_facts.openstack_servers }}"
+
+- name: Get Instance Info -(2/5)
+  os_server_facts:
+    cloud: ospcloud
+    region_name: RegionOne
+  register: result
+
+- debug:
+    msg: "{{ result }}"
+
+- name: Add Host Action -(3/5)
+  add_host:
+     name: "{{ item.public_v4 }}"
+     group: "{{ item.metadata.group }}"
+  with_items: "{{ result.ansible_facts.openstack_servers }}"
+
+- name: Get Instance Info -(4/5)
+  os_server_facts:
+    cloud: ospcloud
+    region_name: RegionOne
+  register: result
+
+- debug:
+    msg: "{{ result }}"
+
